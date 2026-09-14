@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import img from "./images/Flipnote.png";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 function App(): React.JSX.Element {
     return (
@@ -16,8 +18,11 @@ function App(): React.JSX.Element {
             </div>
             <div className="Task-1">
                 <h1>Task 1</h1>
-                <img src="images/Task1.png" alt="Task 1" />
-                To-Do for Task 1:
+                <img
+                    src={img}
+                    style={{ width: "30%", height: "auto" }}
+                    alt="To-Do for Task 1:"
+                />
                 <ol>
                     <li>Add a Heading</li>
                     <li>Add and Image with Alt text</li>
@@ -43,6 +48,65 @@ function App(): React.JSX.Element {
                         the example code above.){" "}
                     </li>
                 </ol>
+
+                <Button
+                    onClick={() => {
+                        console.log("Hello World!");
+                    }}
+                >
+                    Log Hello World!
+                </Button>
+            </div>
+            <div>
+                <Container>
+                    <Row>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "100px",
+                                    height: "50px",
+                                    backgroundColor: "red",
+                                }}
+                            >
+                                First Column
+                            </div>
+                        </Col>
+
+                        <Col>
+                            <div
+                                style={{
+                                    width: "100px",
+                                    height: "50px",
+                                    backgroundColor: "red",
+                                }}
+                            >
+                                Second Column
+                            </div>
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "100px",
+                                    height: "50px",
+                                    backgroundColor: "red",
+                                }}
+                            >
+                                Third Column
+                            </div>
+                        </Col>
+                        <Col>
+                            <div
+                                style={{
+                                    width: "100px",
+                                    height: "50px",
+                                    backgroundColor: "red",
+                                }}
+                            >
+                                Fourth Column
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         </>
     );
