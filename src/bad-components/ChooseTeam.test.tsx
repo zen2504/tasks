@@ -78,4 +78,16 @@ describe("ChooseTeam Component tests", () => {
         expect(currentTeam).toHaveLength(1);
         expect(currentTeam[0].textContent).toEqual(fourth.textContent);
     });
+    test("Selecting the same person twice does not add a duplicate", async () => {
+        const button = screen.getByRole("button", { name: "Alan Turing" });
+        await act(async () => {
+            button.click();
+        });
+        await act(async () => {
+            button.click();
+        });
+        const members = screen.getAllByRole("listitem");
+        expect(members).toHaveLength(1);
+        expect(members[0]).toHaveTextContent("Alan Turing");
+    });
 });
