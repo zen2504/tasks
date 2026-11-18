@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap"
-import { setOriginalNode } from "typescript";
+import { Form } from "react-bootstrap";
 
 export function CheckAnswer({
     expectedAnswer,
@@ -8,21 +7,6 @@ export function CheckAnswer({
     expectedAnswer: string;
 }): React.JSX.Element {
     const [answer, setAnswer] = useState<string>("");
-    const [feedback, setFeedback] = useState<string>("");
-    const isCorrect = answer === expectedAnswer;
-
-    function updateAnswer(event: React.ChangeEvent<HTMLInputElement>) {
-        setAnswer(event.target.value);
-        setFeedback("");
-    }
-
-    function checkAnswer() {
-        if (feedback !== ""){
-            setFeedback("");
-            return;
-        }
-        setFeedback(isCorrect ? "✔️" : "❌");
-    }
 
     return (
         <div>
@@ -31,13 +15,11 @@ export function CheckAnswer({
                 <Form.Control
                     type="text"
                     value={answer}
-                    onChange={updateAnswer}
+                    onChange={(event) => setAnswer(event.target.value)}
                 />
             </Form.Group>
-            <Button type="button" onClick={checkAnswer}>
-                Check Answer
-            </Button>
-            <p role="status">{feedback}</p>
+
+            <p role="status">{answer === expectedAnswer ? "✔️" : "❌"}</p>
         </div>
     );
 }
