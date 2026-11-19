@@ -86,4 +86,10 @@ describe("MultipleChoiceQuestion Component tests", () => {
         expect(screen.getByText(/✔️/i)).toBeInTheDocument();
         expect(screen.queryByText(/❌/i)).not.toBeInTheDocument();
     });
+    test("An empty options list shows an incorrect result", () => {
+    render(<MultipleChoiceQuestion expectedAnswer="2" options={[]} />);
+
+    expect(screen.queryAllByRole("option")).toHaveLength(0);
+    expect(screen.getByText("❌")).toBeInTheDocument();
+});
 });
